@@ -14,7 +14,7 @@ def load_classifier() -> pipeline:
 
     if _classifier is None:
         tokenizer = AutoTokenizer.from_pretrained(
-                                    model="joeddav/xlm-roberta-large-xnli",
+                                    "joeddav/xlm-roberta-large-xnli",
                                     use_fast=False                
                                 )
         _classifier =  pipeline(
