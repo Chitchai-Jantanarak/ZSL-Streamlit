@@ -3,7 +3,7 @@
 import streamlit as st
 from classifier import classify
 
-st.title("Zero-Shot Role Classifier (Thai)")
+st.title("Zero-Shot Role Classifier (TH)")
 
 # Input fields
 description = st.text_area("คำอธิบายจากผู้เข้าร่วม:", "ผมออกแบบ UX สำหรับแอปมือถือ และจัดทำ wireframe ด้วย Figma")

@@ -33,7 +33,7 @@ def classify(
     result = classifier(input_text, candidate_labels=labels)
 
     return List(
-        tuple(
+        Tuple(
             LabelClassification(label),
             float(score)
         ) for (label, score) in zip(result["labels", result["scores"]])
