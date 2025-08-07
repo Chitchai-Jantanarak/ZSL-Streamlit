@@ -19,7 +19,8 @@ def load_classifier() -> pipeline:
                                 )
         _classifier =  pipeline(
                             "zero-shot-classification",
-                            model="joeddav/xlm-roberta-large-xnli"
+                            model="joeddav/xlm-roberta-large-xnli",
+                            tokenizer=tokenizer
                        )
     return _classifier
 
