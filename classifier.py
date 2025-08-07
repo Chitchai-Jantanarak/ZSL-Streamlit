@@ -1,4 +1,4 @@
-from transformers import pipeline
+from transformers import AutoTokenizer, pipeline
 from enum import Enum
 from typing import List, Tuple
 
@@ -13,10 +13,14 @@ def load_classifier() -> pipeline:
     global _classifier
 
     if _classifier is None:
+        tokenizer = AutoTokenizer.from_pretrained(
+                                    model="joeddav/xlm-roberta-large-xnli",
+                                    use_fast=False                
+                                )
         _classifier =  pipeline(
-                        "zero-shot-classification",
-                        model="joeddav/xlm-roberta-large-xnli"
-                    )
+                            "zero-shot-classification",
+                            model="joeddav/xlm-roberta-large-xnli"
+                       )
     return _classifier
 
 def classify(
