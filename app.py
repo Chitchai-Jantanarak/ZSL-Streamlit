@@ -38,17 +38,33 @@ example_descriptions = {
 
 if "description" not in st.session_state:
     st.session_state.description = random.choice(example_descriptions[role_options[0]])
+if "role_input_mode" not in st.session_state:
+    st.session_state.role_input_mode = "select"  # or "text"
 
-def on_role_change():
-    st.session_state.description = random.choice(example_descriptions[st.session_state.role])
+role_input_mode = st.radio(
+    "เลือกวิธีระบุบทบาท:",
+    ("เลือกจากรายการ", "พิมพ์บทบาทเอง"),
+    index=0 if st.session_state.role_input_mode == "select" else 1,
+    key="role_input_mode"
+)
 
-role = st.selectbox("เลือกบทบาทที่ต้องการ:", role_options, index=0, key="role", on_change=on_role_change)
+if role_input_mode == "เลือกจากรายการ":
+    def on_role_change():
+        st.session_state.description = random.choice(example_descriptions[st.session_state.role])
+
+    role = st.selectbox("เลือกบทบาทที่ต้องการ:", role_options, index=0, key="role", on_change=on_role_change)
+else:
+    role = st.text_input("พิมพ์บทบาทที่ต้องการ:", value="", key="custom_role")
+
+actual_role = role if role_input_mode == "เลือกจากรายการ" else role.strip()
 
 description = st.text_area("รายละเอียดงานของผู้สมัคร:", value=st.session_state.description, height=150, key="description")
 
 if st.button("PREDICT"):
     if not description.strip():
         st.warning("กรุณากรอกข้อมูลก่อน")
+    elif not actual_role:
+        st.warning("กรุณาระบุบทบาทก่อน")
     else:
         with st.spinner("กำลังประมวลผล..."):
             st.markdown(f" Role : {role}")
