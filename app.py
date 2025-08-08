@@ -21,10 +21,6 @@ example_descriptions = [
     "เธอมีบทบาทในการวางแผนโครงการและจัดการทีมพัฒนาซอฟต์แวร์ เพื่อให้มั่นใจว่าการส่งมอบงานตรงตามเวลาที่กำหนดและคุณภาพดี",
 ]
 
-if st.button("description"):
-    description = random.choice(example_descriptions)
-    st.experimental_rerun() 
-
 role = st.selectbox("เลือกบทบาทที่ต้องการ:", role_options)
 
 description = st.text_area("รายละเอียดงานของผู้สมัคร:", height=150)
