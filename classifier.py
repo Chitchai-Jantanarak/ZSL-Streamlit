@@ -17,13 +17,13 @@ def load_classifier() -> pipeline:
         #                             "joeddav/xlm-roberta-large-xnli",
         #                             use_fast=False                
         #                         )
-        _classifier =  pipeline(
-                            "zero-shot-classification",
-                            model="facebook/bart-large-mnli",
-                            tokenizer="facebook/bart-large-mnli",
-                            use_fast=False,
-                            trust_remote_code=True
-                       )
+        _classifier = pipeline(
+                        "zero-shot-classification",
+                        model="joeddav/xlm-roberta-large-xnli",
+                        tokenizer="joeddav/xlm-roberta-large-xnli",
+                        use_fast=True,
+                        trust_remote_code=True
+                      )
     return _classifier
 
 def classify(
