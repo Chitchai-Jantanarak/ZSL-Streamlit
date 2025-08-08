@@ -13,14 +13,13 @@ def load_classifier() -> pipeline:
     global _classifier
 
     if _classifier is None:
-        tokenizer = AutoTokenizer.from_pretrained(
-                                    "joeddav/xlm-roberta-large-xnli",
-                                    use_fast=False                
-                                )
+        # tokenizer = AutoTokenizer.from_pretrained(
+        #                             "joeddav/xlm-roberta-large-xnli",
+        #                             use_fast=False                
+        #                         )
         _classifier =  pipeline(
                             "zero-shot-classification",
-                            model="joeddav/xlm-roberta-large-xnli",
-                            tokenizer=tokenizer
+                            model="joeddav/xlm-roberta-large-xnli"
                        )
     return _classifier
 
