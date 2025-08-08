@@ -51,10 +51,11 @@ if st.button("PREDICT"):
         st.warning("กรุณากรอกข้อมูลก่อน")
     else:
         with st.spinner("กำลังประมวลผล..."):
-            st.markdown(f" Role : {role}/n Description : {description}")
+            st.markdown(f" Role : {role}")
+            st.markdown(f" Description : {description}")
             results = classify(description, role)
 
         st.subheader("ผลลัพธ์การจัดประเภท:")
 
         for label_enum, score in results:
-            st.markdown(f"**{label_enum.value}:** {score * 100:.2%}%")
+            st.markdown(f"**{label_enum.value}:** {score:.2%}")
