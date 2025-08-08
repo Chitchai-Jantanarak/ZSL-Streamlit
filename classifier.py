@@ -43,5 +43,5 @@ def classify(
         Tuple(
             LabelClassification(label),
             float(score)
-        ) for (label, score) in zip(result["labels", result["scores"]])
+        ) for (label, score) in zip(result["labels"], result["scores"])
     )
