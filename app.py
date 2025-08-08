@@ -39,12 +39,12 @@ example_descriptions = {
 if "description" not in st.session_state:
     st.session_state.description = random.choice(example_descriptions[role_options[0]])
 if "role_input_mode" not in st.session_state:
-    st.session_state.role_input_mode = "select"  # or "text"
+    st.session_state.role_input_mode = "เลือกจากรายการ"  # default to first option
 
 role_input_mode = st.radio(
     "เลือกวิธีระบุบทบาท:",
     ("เลือกจากรายการ", "พิมพ์บทบาทเอง"),
-    index=0 if st.session_state.role_input_mode == "select" else 1,
+    index=0 if st.session_state.role_input_mode == "เลือกจากรายการ" else 1,
     key="role_input_mode"
 )
 
